@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -13,7 +13,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSent(false);
-    setError('');
+    setError("");
 
     emailjs.send(
       process.env.REACT_APP_EMAILJS_SERVICE_ID,
@@ -21,14 +21,14 @@ const Contact = () => {
       form,
       process.env.REACT_APP_EMAILJS_USER_ID
     )
-    .then(() => {
-      setSent(true);
-      setForm({ name: '', email: '', message: '' });
-    })
-    .catch((err) => {
-      console.error('EmailJS error:', err);
-      setError('Failed to send message. Please try again later.');
-    });
+      .then(() => {
+        setSent(true);
+        setForm({ name: "", email: "", message: "" });
+      })
+      .catch((err) => {
+        console.error("EmailJS error:", err);
+        setError("Failed to send message. Please try again later.");
+      });
   };
 
   return (

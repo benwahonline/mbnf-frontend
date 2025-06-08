@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const CaseList = () => {
   const [cases, setCases] = useState([]);
@@ -8,9 +8,9 @@ const CaseList = () => {
   useEffect(() => {
     const fetchCases = async () => {
       try {
-        const response = await fetch('https://YOUR_BACKEND_URL/cases');
+        const response = await fetch("https://YOUR_BACKEND_URL/cases");
         if (!response.ok) {
-          throw new Error('Failed to fetch cases');
+          throw new Error("Failed to fetch cases");
         }
         const data = await response.json();
         setCases(data);

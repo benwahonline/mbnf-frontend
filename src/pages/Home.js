@@ -1,10 +1,16 @@
-import React from 'react';
+import React from "react";
+import Hero from "../components/Hero";
+import StatsCard from "../components/StatsCard";
 
 const Home = () => {
   return (
-    <div className="p-6 text-center">
-      <h1 className="text-4xl font-bold mb-4">Missing But Not Forgotten (MBNF)</h1>
-      <p className="text-lg">Advocating for missing and abducted persons in Tanzania. A project of The Tanganyikan NGO.</p>
+    <div>
+      <Hero />
+      <div className="max-w-6xl mx-auto p-6 grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+        <StatsCard title="Missing Persons" value="120+" />
+        <StatsCard title="Resolved Cases" value="35" />
+        <StatsCard title="Ongoing Investigations" value="50" />
+      </div>
     </div>
   );
 };

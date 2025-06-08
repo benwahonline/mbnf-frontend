@@ -1,6 +1,6 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
-import { getAuth } from 'firebase/auth';
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { getAuth } from "firebase/auth";
 
 const PrivateRoute = ({ children }) => {
   const auth = getAuth();

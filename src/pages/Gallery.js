@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const Gallery = () => {
   const [cases, setCases] = useState([]);
@@ -12,7 +12,7 @@ const Gallery = () => {
         setLoading(false);
       })
       .catch(err => {
-        console.error('Error fetching cases:', err);
+        console.error("Error fetching cases:", err);
         setLoading(false);
       });
   }, []);
@@ -27,13 +27,13 @@ const Gallery = () => {
           <div key={index} className="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
             <div className="h-48 bg-gray-200 flex items-center justify-center mb-4">
 			
-			{person.image ? (
-				<img src={person.image} alt={person.name} className="h-48 w-full object-cover mb-4 rounded" />
-				) : (
-				<div className="h-48 bg-gray-200 flex items-center justify-center mb-4">
-				<span className="text-6xl">🕵️‍♂️</span>
-				</div>
-				)}
+              {person.image ? (
+                <img src={person.image} alt={person.name} className="h-48 w-full object-cover mb-4 rounded" />
+              ) : (
+                <div className="h-48 bg-gray-200 flex items-center justify-center mb-4">
+                  <span className="text-6xl">🕵️‍♂️</span>
+                </div>
+              )}
 
               {/* Optional: replace with real image if you add image URLs */}
               <span className="text-6xl">🕵️‍♂️</span>

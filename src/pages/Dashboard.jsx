@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import CaseList from '../components/CaseList';
+import React from "react";
+import { Link } from "react-router-dom";
+import CaseList from "../components/CaseList";
 
 
 const Dashboard = () => {

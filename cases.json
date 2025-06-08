@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Azory Gwanda",
+    "date_missing": "2017-11-21",
+    "location": "Morogoro Region",
+    "description": "Journalist Azory Gwanda disappeared after investigating rural killings. Presumed enforced disappearance.",
+    "status": "missing"
+  },
+  {
+    "name": "Ben Saanane",
+    "date_missing": "2016-11-07",
+    "location": "Dar es Salaam",
+    "description": "Political advisor Ben Saanane disappeared under suspicious circumstances.",
+    "status": "missing"
+  },
+  {
+    "name": "Mdude Nyagali",
+    "date_missing": "2019-05-05",
+    "location": "Mbeya Region",
+    "description": "Political activist kidnapped and tortured by unknown persons, later released.",
+    "status": "released"
+  },
+  {
+    "name": "Deusdedit Soka",
+    "date_missing": "2021-04-12",
+    "location": "Kigoma Region",
+    "description": "Human rights activist disappeared while traveling to Kigoma.",
+    "status": "missing"
+  }
+]

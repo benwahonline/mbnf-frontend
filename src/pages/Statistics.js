@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend
-} from 'recharts';
+} from "recharts";
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const Statistics = () => {
   const [cases, setCases] = useState([]);
@@ -17,7 +17,7 @@ const Statistics = () => {
         setLoading(false);
       })
       .catch(err => {
-        console.error('Error fetching cases:', err);
+        console.error("Error fetching cases:", err);
         setLoading(false);
       });
   }, []);
