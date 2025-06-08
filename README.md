@@ -1,70 +1,140 @@
-# Getting Started with Create React App
+# Missing But Not Forgotten (MBNF) Platform - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_A project of The Tanganyikan NGO_
 
-## Available Scripts
+[![CI Status](https://github.com/YOUR_USERNAME/mbnf-frontend/actions/workflows/deploy.yml/badge.svg)](https://github.com/YOUR_USERNAME/mbnf-frontend/actions/workflows/deploy.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🌍 Project Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The **Missing But Not Forgotten (MBNF) Platform** is an open civil society digital project documenting cases of **missing and abducted persons in Tanzania**.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This is the **frontend React application** for the MBNF Platform.
 
-### `npm test`
+👉 Live site: [https://mbnf-frontend.vercel.app](https://mbnf-frontend.vercel.app)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+👉 Project Wiki: [https://github.com/YOUR_USERNAME/mbnf-frontend/wiki](https://github.com/YOUR_USERNAME/mbnf-frontend/wiki)
 
-### `npm run build`
+👉 Full project overview: [Transparency Page](https://mbnf-frontend.vercel.app/transparency)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🖥️ Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React  
+- React Router  
+- Firebase Auth  
+- Firebase Firestore  
+- Tailwind CSS  
+- Chart.js  
+- React Leaflet  
+- Express API (backend)  
+- Vercel (hosting)
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🚀 Features
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+✅ Public Gallery of Missing Persons  
+✅ Interactive Map of Abduction / Missing Locations  
+✅ Live Statistics  
+✅ Public Contact Form  
+✅ SEO + Social Sharing Optimized (OG Images)  
+✅ Secure Admin Dashboard  
+✅ Open-source and transparent  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🎨 Screenshots
 
-## Learn More
+👉 See the [MBNF Press Kit](https://mbnf-frontend.vercel.app/press-kit) for official media screenshots.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🔧 Getting Started
 
-### Code Splitting
+### 1️⃣ Clone this repo:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+git clone https://github.com/YOUR_USERNAME/mbnf-frontend.git
+cd mbnf-frontend
+```
 
-### Analyzing the Bundle Size
+### 2️⃣ Install dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm install
+```
 
-### Making a Progressive Web App
+### 3️⃣ Setup environment:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+👉 Copy `.env.example` → `.env`  
+👉 Fill in your Firebase project keys.
 
-### Advanced Configuration
+### 4️⃣ Run locally:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+npm start
+```
 
-### Deployment
+👉 App will be available at `http://localhost:3000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 🚀 Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+👉 Production build → hosted on [Vercel](https://vercel.com).  
+👉 CI/CD → GitHub Actions → auto-deploys on `main` branch push.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🤝 Contributing
+
+👉 We welcome contributions from:
+
+- Developers  
+- Designers  
+- Content experts  
+- Human rights defenders  
+- NGO partners  
+
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) and our [Code of Conduct](CODE_OF_CONDUCT.md).
+
+---
+
+## 🛡️ Security
+
+Please review our [SECURITY.md](SECURITY.md) guidelines.
+
+---
+
+## 🙏 Acknowledgements
+
+- Families of the missing and abducted persons of Tanzania  
+- Partner NGOs and civil society collaborators  
+- Front Line Defenders  
+- Tanzania Human Rights Defenders Coalition (THRDC)  
+- All contributors to this project  
+
+---
+
+## 📧 Contact
+
+Missing But Not Forgotten (MBNF) Platform  
+A project of The Tanganyikan NGO
+
+📧 info@tanganyikan.ngo  
+🌐 [https://mbnf-frontend.vercel.app](https://mbnf-frontend.vercel.app)
+
+---
+
+# Together we ensure that no one is forgotten.  
+# Missing But Not Forgotten (MBNF).
