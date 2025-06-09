@@ -4,6 +4,14 @@ import { useNavigate } from "react-router-dom";
 import CaseList from "../components/CaseList";
 import AddCaseForm from "../components/AddCaseForm";
 
+const { isAdmin } = useAuth();
+
+{isAdmin && (
+  <button className="bg-green-500 text-white px-4 py-2 rounded">
+    Admin Action
+  </button>
+)}
+
 const Dashboard = () => {
   const { logout, isAdmin } = useAuth(); // get isAdmin from context
   const navigate = useNavigate();

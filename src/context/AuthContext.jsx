@@ -57,6 +57,15 @@ export const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+const [isAdmin, setIsAdmin] = useState(false);
+
+const value = {
+  currentUser,
+  login,
+  logout,
+  isAdmin, // Add this
+};
+
   const value = {
     currentUser,
     login,
