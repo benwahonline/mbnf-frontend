@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const NavBar = () => {
-  const { currentUser, logout } = useAuth();
+  const { currentUser, isAdmin, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -14,6 +14,9 @@ const NavBar = () => {
       console.error("Failed to logout", err);
     }
   };
+
+  const isSuperAdmin =
+    isAdmin && currentUser?.uid === process.env.REACT_APP_SUPER_ADMIN_UID;
 
   return (
     <nav className="flex justify-between items-center px-6 py-4 bg-white shadow mb-6">
@@ -29,6 +32,30 @@ const NavBar = () => {
             <Link to="/stats" className="text-gray-700 hover:text-blue-600">
               Stats
             </Link>
+
+            {isSuperAdmin && (
+              <>
+                <Link
+                  to="/admin-users"
+                  className="text-gray-700 hover:text-blue-600 flex items-center space-x-1"
+                >
+                  <span>Admin Users</span>
+                  <span className="bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded">
+                    Super Admin
+                  </span>
+                </Link>
+
+                <Link
+                  to="/admin-management"
+                  className="text-gray-700 hover:text-blue-600 flex items-center space-x-1"
+                >
+                  <span>Admin Management</span>
+                  <span className="bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded">
+                    Super Admin
+                  </span>
+                </Link>
+              </>
+            )}
           </>
         )}
       </div>

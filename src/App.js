@@ -4,17 +4,19 @@ import Dashboard from "./pages/Dashboard";
 import Statistics from "./pages/Statistics";
 import Login from "./pages/Login";
 import HomePage from "./pages/HomePage";
+import AdminManagement from "./pages/AdminManagement";
+import AdminUsersList from "./pages/AdminUsersList"; // ADD THIS
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
 import ErrorBoundary from "./components/ErrorBoundary";
-import NavBar from "./components/NavBar"; // ADD THIS
+import NavBar from "./components/NavBar";
 
 const App = () => {
   return (
     <ErrorBoundary>
       <AuthProvider>
         <Router>
-          <NavBar /> {/* Always show NavBar */}
+          <NavBar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route
@@ -30,6 +32,22 @@ const App = () => {
               element={
                 <PrivateRoute>
                   <Statistics />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin-management"
+              element={
+                <PrivateRoute>
+                  <AdminManagement />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin-users"
+              element={
+                <PrivateRoute>
+                  <AdminUsersList />
                 </PrivateRoute>
               }
             />
