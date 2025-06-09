@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
-  const { login } = useAuth(); // Assuming you have a login function
+  const { login } = useAuth(); // ✅ must use login from context!
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -14,8 +14,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(email, password);
-      navigate(from, { replace: true }); // Redirect back after login
+      await login(email, password); // ✅ correct login function
+      navigate(from, { replace: true });
     } catch (err) {
       console.error("Failed to login", err);
       alert("Login failed.");
