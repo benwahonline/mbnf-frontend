@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { fetchCases } from "../services/api";
 
 const CaseList = () => {
   const [cases, setCases] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchCases = async () => {
+    const loadCases = async () => {
       try {
-        const response = await fetch(
-          `${process.env.REACT_APP_API_BASE}/cases`
-        );
-        const data = await response.json();
+        const data = await fetchCases();
         setCases(data);
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching cases:", error);
+      } finally {
         setLoading(false);
       }
     };
 
-    fetchCases();
+    loadCases();
   }, []);
 
   if (loading) {
@@ -38,9 +36,7 @@ const CaseList = () => {
           className="bg-white p-4 rounded shadow hover:shadow-lg transition"
         >
           <h3 className="text-xl font-bold mb-2">{c.name}</h3>
-          <p className="text-sm text-gray-600 mb-1">
-            Location: {c.location}
-          </p>
+          <p className="text-sm text-gray-600 mb-1">Location: {c.location}</p>
           <p className="text-sm text-gray-600 mb-1">Date: {c.date}</p>
           <p className="text-sm text-gray-700">{c.description}</p>
         </div>
