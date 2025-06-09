@@ -3,17 +3,20 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Dashboard from "./pages/Dashboard";
 import Statistics from "./pages/Statistics";
 import Login from "./pages/Login";
+import HomePage from "./pages/HomePage";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
-import ErrorBoundary from "./components/ErrorBoundary"; // ADD THIS
+import ErrorBoundary from "./components/ErrorBoundary";
+import NavBar from "./components/NavBar"; // ADD THIS
 
 const App = () => {
   return (
     <ErrorBoundary>
       <AuthProvider>
         <Router>
+          <NavBar /> {/* Always show NavBar */}
           <Routes>
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/" element={<HomePage />} />
             <Route
               path="/dashboard"
               element={
