@@ -1,11 +1,11 @@
 import React from "react";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CaseList from "../components/CaseList";
 import AddCaseForm from "../components/AddCaseForm";
 
 const Dashboard = () => {
-  const { logout } = useAuth();
+  const { logout, isAdmin } = useAuth(); // get isAdmin from context
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -22,31 +22,38 @@ const Dashboard = () => {
       {/* Header */}
       <header className="flex justify-between items-center px-6 py-4 bg-white shadow">
         <h1 className="text-2xl font-bold text-gray-800">MBNF Admin Dashboard</h1>
-        <div className="flex space-x-4">
-          <Link
-            to="/stats"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          >
-            View Stats
-          </Link>
-          <button
-            onClick={handleLogout}
-            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-          >
-            Logout
-          </button>
-        </div>
+        <button
+          onClick={handleLogout}
+          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+        >
+          Logout
+        </button>
       </header>
 
       {/* Main content */}
       <main className="p-6 space-y-8">
-        {/* Add Case Form */}
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Add New Case</h2>
-          <AddCaseForm />
-        </section>
+        {/* Admin-only section */}
+        {isAdmin && (
+          <section>
+            <h2 className="text-2xl font-semibold mb-4 text-green-700">Admin Panel</h2>
+            <button
+              onClick={() => alert("Admin action executed!")}
+              className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+            >
+              Admin Action
+            </button>
+          </section>
+        )}
 
-        {/* Cases Overview */}
+        {/* Add Case Form (only show to admin) */}
+        {isAdmin && (
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">Add New Case</h2>
+            <AddCaseForm />
+          </section>
+        )}
+
+        {/* Cases Overview (visible to all logged-in users) */}
         <section>
           <h2 className="text-2xl font-semibold mb-4">Cases Overview</h2>
           <CaseList />

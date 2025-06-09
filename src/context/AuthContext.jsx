@@ -28,10 +28,21 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false); // Add isAdmin state
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
+
+      if (user) {
+        const tokenResult = await user.getIdTokenResult();
+        console.log("User claims:", tokenResult.claims);
+
+        setIsAdmin(!!tokenResult.claims.admin); // Set isAdmin true/false
+      } else {
+        setIsAdmin(false);
+      }
+
       setLoading(false);
     });
 
@@ -48,8 +59,9 @@ export const AuthProvider = ({ children }) => {
 
   const value = {
     currentUser,
-    login, // ADD login here!
+    login,
     logout,
+    isAdmin, // Add isAdmin to context value
   };
 
   return (
