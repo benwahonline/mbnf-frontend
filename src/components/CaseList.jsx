@@ -3,20 +3,18 @@ import React, { useEffect, useState } from "react";
 const CaseList = () => {
   const [cases, setCases] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchCases = async () => {
       try {
-        const response = await fetch("https://YOUR_BACKEND_URL/cases");
-        if (!response.ok) {
-          throw new Error("Failed to fetch cases");
-        }
+        const response = await fetch(
+          `${process.env.REACT_APP_API_BASE}/cases`
+        );
         const data = await response.json();
         setCases(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching cases:", error);
         setLoading(false);
       }
     };
@@ -28,30 +26,25 @@ const CaseList = () => {
     return <p>Loading cases...</p>;
   }
 
-  if (error) {
-    return <p className="text-red-500">Error: {error}</p>;
+  if (!cases.length) {
+    return <p>No cases found.</p>;
   }
 
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full bg-white border border-gray-200">
-        <thead>
-          <tr className="bg-gray-100 text-left">
-            <th className="py-2 px-4 border-b">Name</th>
-            <th className="py-2 px-4 border-b">Date Missing</th>
-            <th className="py-2 px-4 border-b">Location</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cases.map((caseItem) => (
-            <tr key={caseItem.id} className="hover:bg-gray-50">
-              <td className="py-2 px-4 border-b">{caseItem.name}</td>
-              <td className="py-2 px-4 border-b">{caseItem.date_missing}</td>
-              <td className="py-2 px-4 border-b">{caseItem.location}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {cases.map((c) => (
+        <div
+          key={c.id || c._id}
+          className="bg-white p-4 rounded shadow hover:shadow-lg transition"
+        >
+          <h3 className="text-xl font-bold mb-2">{c.name}</h3>
+          <p className="text-sm text-gray-600 mb-1">
+            Location: {c.location}
+          </p>
+          <p className="text-sm text-gray-600 mb-1">Date: {c.date}</p>
+          <p className="text-sm text-gray-700">{c.description}</p>
+        </div>
+      ))}
     </div>
   );
 };
