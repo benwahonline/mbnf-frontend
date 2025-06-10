@@ -10,6 +10,7 @@ import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
 import ErrorBoundary from "./components/ErrorBoundary";
 import NavBar from "./components/NavBar";
+import GetMyUid from "./pages/GetMyUid";
 
 const App = () => {
   return (
@@ -44,6 +45,14 @@ const App = () => {
               }
             />
             <Route
+              path="/get-my-uid"
+              element={
+                <PrivateRoute>
+                  <GetMyUid />
+                </PrivateRoute>
+              }
+            />
+            <Route
               path="/admin-users"
               element={
                 <PrivateRoute>
@@ -53,7 +62,14 @@ const App = () => {
             />
             <Route path="/login" element={<Login />} />
             {/* Fallback route for undefined paths */}
-            <Route path="*" element={<h1 style={{ textAlign: "center", marginTop: "50px" }}>404 - Page Not Found</h1>} />
+            <Route
+              path="*"
+              element={
+                <h1 style={{ textAlign: "center", marginTop: "50px" }}>
+                  404 - Page Not Found
+                </h1>
+              }
+            />
           </Routes>
         </Router>
       </AuthProvider>

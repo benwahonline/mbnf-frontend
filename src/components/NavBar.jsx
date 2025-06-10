@@ -59,14 +59,20 @@ const NavBar = () => {
           </>
         )}
       </div>
-      <div>
+      <div className="flex flex-col items-end space-y-2">
         {currentUser ? (
-          <button
-            onClick={handleLogout}
-            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-          >
-            Logout
-          </button>
+          <>
+            <button
+              onClick={handleLogout}
+              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+            >
+              Logout
+            </button>
+            {/* ✅ Added currentUser.uid display */}
+            <div className="text-xs text-gray-600 mt-2">
+              Logged in UID: {currentUser.uid}
+            </div>
+          </>
         ) : (
           <Link
             to="/login"
