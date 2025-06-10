@@ -5,7 +5,7 @@ import Statistics from "./pages/Statistics";
 import Login from "./pages/Login";
 import HomePage from "./pages/HomePage";
 import AdminManagement from "./pages/AdminManagement";
-import AdminUsersList from "./pages/AdminUsersList"; // ADD THIS
+import AdminUsersList from "./pages/AdminUsersList";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -52,6 +52,8 @@ const App = () => {
               }
             />
             <Route path="/login" element={<Login />} />
+            {/* Fallback route for undefined paths */}
+            <Route path="*" element={<h1 style={{ textAlign: "center", marginTop: "50px" }}>404 - Page Not Found</h1>} />
           </Routes>
         </Router>
       </AuthProvider>
