@@ -49,6 +49,18 @@ export const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
+  // Add helper function to window for debugging
+  window.getFirebaseIdToken = async () => {
+    if (auth.currentUser) {
+      const token = await auth.currentUser.getIdToken(true);
+      console.log("ID Token:", token);
+      return token;
+    } else {
+      console.log("No user is currently logged in.");
+      return null;
+    }
+  };
+
   const login = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
