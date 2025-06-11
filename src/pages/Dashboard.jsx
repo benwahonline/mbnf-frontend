@@ -3,9 +3,12 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import CaseList from "../components/CaseList";
 import AddCaseForm from "../components/AddCaseForm";
+import SetAdminButton from "../components/SetAdminButton";
+import AdminUsersList from "../components/AdminUsersList";
+import CopyTokenButton from "../components/CopyTokenButton";
 
 const Dashboard = () => {
-  const { logout, isAdmin } = useAuth(); // Correct place to use useAuth
+  const { logout, isAdmin } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -36,12 +39,19 @@ const Dashboard = () => {
         {isAdmin && (
           <section>
             <h2 className="text-2xl font-semibold mb-4 text-green-700">Admin Panel</h2>
-            <button
-              onClick={() => alert("Admin action executed!")}
-              className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-            >
-              Admin Action
-            </button>
+            
+            {/* Copy Token */}
+            <CopyTokenButton />
+
+            {/* Set Admin Claims */}
+            <div className="mt-6">
+              <SetAdminButton />
+            </div>
+
+            {/* Admin Users List */}
+            <div className="mt-6">
+              <AdminUsersList />
+            </div>
           </section>
         )}
 
