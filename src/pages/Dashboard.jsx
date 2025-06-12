@@ -6,6 +6,7 @@ import AddCaseForm from "../components/AddCaseForm";
 import SetAdminButton from "../components/SetAdminButton";
 import AdminUsersList from "../components/AdminUsersList";
 import CopyTokenButton from "../components/CopyTokenButton";
+import BulkUploadCases from "../components/BulkUploadCases"; // ✅ NEW
 
 const Dashboard = () => {
   const { logout, isAdmin } = useAuth();
@@ -51,6 +52,11 @@ const Dashboard = () => {
             {/* Admin Users List */}
             <div className="mt-6">
               <AdminUsersList />
+            </div>
+
+            {/* Bulk Upload Cases */}
+            <div className="mt-6">
+              <BulkUploadCases /> {/* ✅ NEW */}
             </div>
           </section>
         )}
