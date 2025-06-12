@@ -24,6 +24,15 @@ const NavBar = () => {
         <Link to="/" className="text-blue-600 font-bold text-lg">
           MBNF Platform
         </Link>
+        <Link to="/public/cases" className="text-gray-700 hover:text-blue-600">
+          Browse Cases
+        </Link>
+        <Link to="/public/stats" className="text-gray-700 hover:text-blue-600">
+          View Stats
+        </Link>
+        <Link to="/public/map" className="text-gray-700 hover:text-blue-600">
+          View Map
+        </Link>
         {currentUser && (
           <>
             <Link to="/dashboard" className="text-gray-700 hover:text-blue-600">
@@ -32,7 +41,6 @@ const NavBar = () => {
             <Link to="/stats" className="text-gray-700 hover:text-blue-600">
               Stats
             </Link>
-
             {isSuperAdmin && (
               <>
                 <Link
@@ -44,7 +52,6 @@ const NavBar = () => {
                     Super Admin
                   </span>
                 </Link>
-
                 <Link
                   to="/admin-management"
                   className="text-gray-700 hover:text-blue-600 flex items-center space-x-1"
@@ -68,7 +75,6 @@ const NavBar = () => {
             >
               Logout
             </button>
-            {/* ✅ Added currentUser.uid display */}
             <div className="text-xs text-gray-600 mt-2">
               Logged in UID: {currentUser.uid}
             </div>

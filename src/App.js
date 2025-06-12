@@ -11,6 +11,10 @@ import PrivateRoute from "./components/PrivateRoute";
 import ErrorBoundary from "./components/ErrorBoundary";
 import NavBar from "./components/NavBar";
 import GetMyUid from "./pages/GetMyUid";
+import PublicHomePage from "./pages/PublicHomePage";
+import PublicCasesPage from "./pages/PublicCasesPage";
+import PublicStatsPage from "./pages/PublicStatsPage";
+import PublicMapPage from "./pages/PublicMapPage";
 
 const App = () => {
   return (
@@ -19,7 +23,10 @@ const App = () => {
         <Router>
           <NavBar />
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<PublicHomePage />} />
+            <Route path="/public/cases" element={<PublicCasesPage />} />
+            <Route path="/public/stats" element={<PublicStatsPage />} />
+            <Route path="/public/map" element={<PublicMapPage />} />
             <Route
               path="/dashboard"
               element={
