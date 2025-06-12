@@ -1,46 +1,80 @@
 import React, { useEffect, useState } from "react";
-import { fetchCases } from "../services/api";
+import EditCaseModal from "./EditCaseModal";
 
 const CaseList = () => {
   const [cases, setCases] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [selectedCase, setSelectedCase] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const fetchCases = async () => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE}/cases`);
+      const data = await response.json();
+      setCases(data);
+    } catch (err) {
+      console.error("Error fetching cases:", err);
+    }
+  };
 
   useEffect(() => {
-    const loadCases = async () => {
-      try {
-        const data = await fetchCases();
-        setCases(data);
-      } catch (error) {
-        console.error("Error fetching cases:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadCases();
+    fetchCases();
   }, []);
 
-  if (loading) {
-    return <p>Loading cases...</p>;
-  }
+  const handleEditClick = (caseItem) => {
+    setSelectedCase(caseItem);
+    setIsModalOpen(true);
+  };
 
-  if (!cases.length) {
-    return <p>No cases found.</p>;
-  }
+  const handleSave = async (updatedCase) => {
+    try {
+      const token = await window.firebase.auth().currentUser.getIdToken();
+      await fetch(`${process.env.REACT_APP_API_BASE}/cases/${updatedCase.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(updatedCase),
+      });
+
+      setIsModalOpen(false);
+      fetchCases(); // Refresh list
+    } catch (err) {
+      console.error("Error updating case:", err);
+    }
+  };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {cases.map((c) => (
-        <div
-          key={c.id || c._id}
-          className="bg-white p-4 rounded shadow hover:shadow-lg transition"
-        >
-          <h3 className="text-xl font-bold mb-2">{c.name}</h3>
-          <p className="text-sm text-gray-600 mb-1">Location: {c.location}</p>
-          <p className="text-sm text-gray-600 mb-1">Date: {c.date}</p>
-          <p className="text-sm text-gray-700">{c.description}</p>
+        <div key={c.id} className="border rounded shadow p-4 bg-white flex flex-col">
+          {c.imageUrl && (
+            <img
+              src={c.imageUrl}
+              alt={c.name}
+              className="h-48 object-cover mb-2"
+            />
+          )}
+          <h2 className="text-xl font-bold">{c.name}</h2>
+          <p>Status: {c.status}</p>
+          <p>Location: {c.location}</p>
+          <p>Date: {c.date}</p>
+          <p className="text-sm mt-2">{c.description}</p>
+          <button
+            onClick={() => handleEditClick(c)}
+            className="mt-4 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
+          >
+            Edit
+          </button>
         </div>
       ))}
+
+      <EditCaseModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        caseData={selectedCase}
+        onSave={handleSave}
+      />
     </div>
   );
 };

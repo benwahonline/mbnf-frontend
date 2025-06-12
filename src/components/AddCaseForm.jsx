@@ -8,7 +8,7 @@ const AddCaseForm = () => {
     location: "",
     date: "",
     description: "",
-    status: "missing",
+    status: "Missing",
   });
 
   const { currentUser } = useAuth();
@@ -32,7 +32,7 @@ const AddCaseForm = () => {
         location: "",
         date: "",
         description: "",
-        status: "missing",
+        status: "Missing",
       });
     } catch (error) {
       console.error("Error adding case:", error);
@@ -80,8 +80,11 @@ const AddCaseForm = () => {
         onChange={handleChange}
         className="w-full border p-2 rounded"
       >
-        <option value="missing">Missing</option>
-        <option value="found">Found</option>
+        <option value="Missing">Missing</option>
+        <option value="Found">Found</option>
+        <option value="Abducted">Abducted</option>
+        <option value="Re-abducted">Re-abducted</option>
+        <option value="Other">Other</option>
       </select>
       <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
         Add Case
